@@ -157,7 +157,7 @@ challengePassword_max		= 20
 unstructuredName		= An optional company name
 
 [ req_ext ]
-subjectAltName = DNS.1:demo.b7n.dog
+subjectAltName = DNS.1:changeme.internal
 
 [ usr_cert ]
 
@@ -206,7 +206,7 @@ authorityKeyIdentifier=keyid,issuer
 #
 #Subject Alt Name Stuff
 ################
-subjectAltName	= DNS.1:demo.b7n.dog
+subjectAltName	= DNS.1:changeme.internal
 # These extensions are added when 'ca' signs a request.
 
 basicConstraints=CA:FALSE
@@ -233,7 +233,7 @@ authorityKeyIdentifier=keyid,issuer
 
 basicConstraints = CA:FALSE
 keyUsage = nonRepudiation, digitalSignature, keyEncipherment
-subjectAltName  = DNS.1:demo.b7n.dog
+subjectAltName  = DNS.1:changeme.internal
 
 [ ocsp_cert ]
 subjectKeyIdentifier=	 hash
@@ -242,14 +242,14 @@ extendedKeyUsage=1.3.6.1.5.5.7.3.9,1.3.6.1.5.5.7.3.1,1.3.6.1.5.5.7.3.2,1.3.6.1.5
 keyUsage = nonRepudiation, digitalSignature, keyEncipherment,dataEncipherment, keyAgreement
 nsCertType=server,client
 noCheck=ignored
-subjectAltName  = DNS.1:demo.b7n.dog
+subjectAltName  = DNS.1:changeme.internal
 
 [ v3_ca ]
 # Extensions for a typical CA
 # PKIX recommendation.
 subjectKeyIdentifier=hash
 authorityKeyIdentifier=keyid:always,issuer:always
-subjectAltName  = DNS.1:demo.b7n.dog
+subjectAltName  = DNS.1:changeme.internal
 
 # This is what PKIX recommends but some broken software chokes on critical
 # extensions.
