@@ -2,16 +2,14 @@ This is the source for the bitwardenjordan/selfsigned Dockerhub image.
 
 Run this image, e.g.:
 
-`docker run -it bitwardenjordan/selfsigned:latest`
+`docker run -v $(pwd):/mnt -it bitwardenjordan/selfsigned:latest`
 
-Follow the prompts to generate a root CA and server certificate. At the end, you should see:
-
-```
-Verifying the new cert
-/usr/src/server.pem: OK
-Done!
+Follow the prompts to generate a root CA and server certificate.
 ```
 
-If you do, you can copy `/usr/src/root.pem` (your root CA), `/usr/src/server.pem` (your server cert), and `/usr/src/unencryptedkey.pem` (your unencrypted private key for the server cert) out of the Docker container.
+The following files will be copied out of the container into your current working directory:
 
-To use these in Bitwarden, concatenate root.pem on top of server.pem, place the files in your bwdata/ssl directory, and reference their locations in config.yml.
+root.pem: your root CA; use for the `ssl_ca_path` in config.yml and with `NODE_EXTRA_CA_CERTS` for BWDC/Bitwarden clients
+certificate.crt: your server cert followed by the root CA in a bundle, use for `ssl_certificate_path`
+server.pem: your server cert, not used for anything by default but may be required if using a separate load balancer or reverse-proxy
+private.key: your server certificate's private key, use for `ssl_key_path`

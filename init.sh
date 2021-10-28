@@ -20,6 +20,7 @@ echo "Move the files to the bind-mount"
 cp /usr/src/rootCA/cert.pem /mnt/root.pem
 cp /usr/src/server.pem /mnt/server.pem
 cp /usr/src/unencryptedkey.pem /mnt/private.key
+cat /mnt/server.pem /mnt/root.pem > /mnt/certificate.crt
 echo "Verifying the new cert was issued by the root"
 openssl verify -CAfile /mnt/root.pem /mnt/server.pem
 echo "Verifying the new SAN DNS name"
